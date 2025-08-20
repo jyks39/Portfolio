@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="dem04.UserControls.RequestUserControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:dem04.UserControls"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="450" d:DesignWidth="600" Margin="5">
+
+	<UserControl.Resources>
+		<ControlTemplate TargetType="TextBox" x:Key="TextBoxTemplate">
+            <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="Black" Margin="0.2">
+                <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0.5" BorderBrush="Transparent" Background="Transparent" FontWeight="Bold" Text="{TemplateBinding Text}" IsEnabled="{TemplateBinding IsEnabled}" TextWrapping="Wrap" />
+			</Border>
+		</ControlTemplate>
+
+		<ControlTemplate TargetType="Button" x:Key="ButtonTemplate">
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="{TemplateBinding Margin}" Width="20" Height="20" Content="{TemplateBinding Content}"/>
+		</ControlTemplate>
+	</UserControl.Resources>
+
+
+	<Border x:Name="MainBorder" BorderBrush="Black" BorderThickness="1" CornerRadius="10 0 10 0" Background="White">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="5*" x:Name="infoRow"/>
+				<RowDefinition Height="5*"/>
+				<RowDefinition Height="5*"/>
+				<RowDefinition Height="10*" x:Name="equipmentRow"/>
+				<RowDefinition Height="30*" x:Name="descriptionRow"/>
+			</Grid.RowDefinitions>
+            <Button x:Name="EditRequestButton" Grid.Row="0" Template="{StaticResource ButtonTemplate}" Click="EditRequestButton_Click" Margin="1 1 1 1" Panel.ZIndex="10">
+				<Image Source="pack://application:,,,/pict/pen.png"/>
+			</Button>
+            <Button x:Name="ApproveChanges" Grid.Row="0" Template="{StaticResource ButtonTemplate}" Click="ApproveChanges_Click" Visibility="Hidden" Margin="1 1 1 1" Panel.ZIndex="10">
+				<Image Source="pack://application:,,,/pict/yes.png"/>
+			</Button>
+            <Button x:Name="DeleteRequestButton" Grid.Row="0" Template="{StaticResource ButtonTemplate}" Click="DeleteRequestButton_Click" Margin="1 1 12 1" Panel.ZIndex="10">
+				<Image Source="pack://application:,,,/pict/trashcan.png"/>
+			</Button>
+            <Button x:Name="DiscardChanges" Grid.Row="0" Template="{StaticResource ButtonTemplate}" Click="DiscardChanges_Click" Visibility="Hidden" Margin="1 1 12 1" Panel.ZIndex="10">
+				<Image Source="pack://application:,,,/pict/no.png"/>
+			</Button>
+
+
+            <TextBox x:Name="RequestStateTextBox" Grid.Row="0" Grid.Column="0" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+
+			<ComboBox x:Name="RequestStateComboBox"  Grid.Row="0" Grid.Column="0" IsEnabled="False" Background="Transparent" Visibility="Hidden"/>
+			<Grid Grid.Row="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBox x:Name="ClientTextBox" Grid.Column="0" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+				<TextBox x:Name="WorkerTextBox" Grid.Column="1" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+			</Grid>
+			
+			<Grid Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBox x:Name="DateOfAcceptTextBox" Grid.Column="0" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+				<TextBox x:Name="DateOfWorkStartTextBox" Grid.Column="1" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+				<TextBox x:Name="DateOfWorkEndTextBox" Grid.Column="2" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+			</Grid>
+
+			<TextBox x:Name="EquipmentTextBox" Grid.Row="3" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0 0 0 0.5"/>
+			<TextBox x:Name="DescriptionTextBox" Grid.Row="4" Template="{StaticResource TextBoxTemplate}" IsEnabled="False" BorderThickness="0"/>
+		</Grid>
+	</Border>
+</UserControl>
